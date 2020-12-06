@@ -55,9 +55,9 @@ spec:
             timeoutSeconds: 5
             failureThreshold: 12
           volumeMounts:
-            - name: jenkinshome
-              subPath: jenkins
-              mountPath: /var/lib/jenkins
+            - name: jenkinshome
+              subPath: jenkins
+              mountPath: /var/lib/jenkins
           env:
             - name: JENKINS_HOME
               value: /var/lib/jenkins
@@ -65,10 +65,10 @@ spec:
               value: --httpPort=30080
             - name: JENKINS_SLAVE_AGENT_PORT
               value: "30081"
-      volumes:
-        - name: jenkinshome
-          persistentVolumeClaim:
-            claimName: jenkinspvc
+      volumes:
+        - name: jenkinshome
+          persistentVolumeClaim:
+            claimName: jenkinspvc
       serviceAccountName: jenkins
 ---
 apiVersion: v1
@@ -132,4 +132,3 @@ subjects:
  - kind: ServiceAccount
    name: jenkins
    namespace: devops
-

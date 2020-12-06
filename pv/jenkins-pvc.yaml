@@ -1,16 +1,17 @@
 apiVersion: v1
+apiVersion: v1
 kind: PersistentVolume
 metadata:
- name: jenkinspv
+  name: jenkinspv
+  labels:
+    name: jenkinspv
 spec:
- capacity:
-   storage: 3Gi
- accessModes:
- - ReadWriteMany
- persistentVolumeReclaimPolicy: Delete
- nfs:
-   server: 192.168.1.10
-   path: /data/devops/jenkins
+  nfs:
+    path: /data/devops/jenkins
+    server: 192.168.1.10
+  accessModes: ["ReadWriteMany"]
+  capacity:
+    storage: 3Gi
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1

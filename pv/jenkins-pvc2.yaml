@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkinspv
+spec:
+  storageClassName: manual
+  capacity: 
+    storage: 3Gi
+  accessModes:
+  - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  nfs:
+    path: /data/devops/jenkins  # 指定nfs的挂载点
+    server: 192.168.1.10  # 指定nfs服务地址
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jenkinspvc
+  namespace: devops
+spec:
+  storageClassName: manual
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 3Gi
